@@ -10,7 +10,7 @@ if('serviceWorker' in navigator) {
 
 //Inside your sw.js
 //You can get the polyfill from here: https://github.com/dominiccooney/cache-polyfill/blob/master/index.js
-importScripts('/serviceworker-cache-polyfill.js');
+importScripts('serviceworker-cache-polyfill.js');
 
 //Listening in on an install event and caching site assets
 self.addEventListener('install', function(e) {

@@ -1,14 +1,14 @@
 //Inside your sw.js
 //You can get the polyfill from here: https://github.com/dominiccooney/cache-polyfill/blob/master/index.js
-importScripts('serviceworker-cache-polyfill.js');
+importScripts('/pwa/serviceworker-cache-polyfill.js');
 
 //Listening in on an install event and caching site assets
 self.addEventListener('install', function(e) {
  e.waitUntil(
    caches.open('your_app_name').then(function(cache) {
      return cache.addAll([
-       '/',
-       '/index.html',
+       '/pwa',
+       '/pwa/index.html',
         // Place more assets
      ]);
    })

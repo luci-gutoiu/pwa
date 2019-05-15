@@ -2,7 +2,7 @@
   "name": "My PWA",
   "short_name": "PWA",
   "icons": [{
-    "src": "your_icon.png",
+    "src": "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
       "sizes": "128x128",
       "type": "image/png"
     }],

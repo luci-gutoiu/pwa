@@ -1,13 +1,3 @@
-//Inside your main html file (index.html), paste the following inside script tags at the end of your body tag
-//Registering a service worker
-if('serviceWorker' in navigator) {
-  navigator.serviceWorker
-           .register('/sw.js')
-           .then(function() { console.log("Service Worker Registered"); });
-}
-
---------------------------------
-
 //Inside your sw.js
 //You can get the polyfill from here: https://github.com/dominiccooney/cache-polyfill/blob/master/index.js
 importScripts('serviceworker-cache-polyfill.js');

@@ -1,25 +1,38 @@
-//Inside your sw.js
-//You can get the polyfill from here: https://github.com/dominiccooney/cache-polyfill/blob/master/index.js
-importScripts('/pwa/serviceworker-cache-polyfill.js');
+const staticAssets = [
+    './pwa'
+];
 
-//Listening in on an install event and caching site assets
-self.addEventListener('install', function(e) {
- e.waitUntil(
-   caches.open('your_app_name').then(function(cache) {
-     return cache.addAll([
-       '/pwa',
-       '/pwa/index.html',
-        // Place more assets
-     ]);
-   })
- );
+self.addEventListener('install', async event => {
+    const cache = await caches.open('static-meme');
+    cache.addAll(staticAssets);
 });
 
-//Listening in on fetch requests and if found in cache, bring file from cache
-self.addEventListener('fetch', function(event) {
- event.respondWith(
-   caches.match(event.request).then(function(response) {
-     return response || fetch(event.request);
-   })
- );
+self.addEventListener('fetch', event => {
+    const {request} = event;
+    const url = new URL(request.url);
+    if(url.origin === location.origin) {
+        event.respondWith(cacheData(request));
+    } else {
+        event.respondWith(networkFirst(request));
+    }
+
 });
+
+async function cacheData(request) {
+    const cachedResponse = await caches.match(request);
+    return cachedResponse || fetch(request);
+}
+
+async function networkFirst(request) {
+    const cache = await caches.open('dynamic-meme');
+
+    try {
+        const response = await fetch(request);
+        cache.put(request, response.clone());
+        return response;
+    } catch (error){
+        return await cache.match(request);
+
+    }
+
+}

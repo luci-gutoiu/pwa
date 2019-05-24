@@ -1,9 +1,25 @@
 {
-  "name": "My PWA",
-  "short_name": "PWA",
+  "name": "Template PWA",
+  "short_name": "Template PWA",
   "icons": [{
-    "src": "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png",
+    "src": "pwa/images/icons/icon-128x128.png",
       "sizes": "128x128",
+      "type": "image/png"
+    }, {
+      "src": "pwa/images/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }, {
+      "src": "pwa/images/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    }, {
+      "src": "pwa/images/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }, {
+      "src": "pwa/images/icons/icon-256x256.png",
+      "sizes": "256x256",
       "type": "image/png"
     }],
   "start_url": "/pwa/index.html",
